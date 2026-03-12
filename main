@@ -1,0 +1,36 @@
+#include "DigiKeyboard.h"
+
+void setup() {
+  DigiKeyboard.delay(2000); // Wait 2 sec
+
+  // Open Run dialog
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT); // R with Left GUI (Windows) held down
+  DigiKeyboard.delay(1000); // Wait for Run to appear
+
+  // Type 'notepad' slowly
+  const char* text = "notepad";
+  DigiKeyboard.delay(250); // Wait for Run to appear
+  for (int i = 0; text[i] != '\0'; i++) {
+    DigiKeyboard.print(text[i]);
+    DigiKeyboard.delay(50); // 100ms between each char
+  }
+
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(1000); // Wait for Notepad to open
+
+  // Type a line
+  const char* message = "You're computer is mine!!!! MUAHAHA";
+  for (int i = 0; message[i] != '\0'; i++) {
+    DigiKeyboard.print(message[i]);
+    DigiKeyboard.delay(10);
+  }
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+}
+
+void loop() {
+  const char* binary = "0110101101001011101001001011011010010110100101101011101010011001011";
+  for (int i = 0; binary[i] != '\0'; i++) {
+    DigiKeyboard.print(binary[i]);
+    DigiKeyboard.delay(1); // 100ms between each char
+  }
+}
